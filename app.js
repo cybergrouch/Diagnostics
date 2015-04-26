@@ -21,6 +21,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bootstrap',  express.static(path.join(__dirname, '/bower_components/bootstrap/dist')));
+app.use('/jquery',  express.static(path.join(__dirname, '/bower_components/jquery/dist')));
+app.use('/keen-js',  express.static(path.join(__dirname, '/bower_components/keen-js/dist')));
+app.use('/dc-js',  express.static(path.join(__dirname, '/node_modules/dc/web/js')));
+app.use('/query-js',  express.static(path.join(__dirname, '/bower_components/query')));
 
 app.use('/', routes);
 app.use('/users', users);
