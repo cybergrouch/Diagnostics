@@ -63,30 +63,28 @@ function makeGraphs(error, paymentDiagnostics) {
 
     //Charts
     var timeChart = dc.barChart("#time-chart");
-    var phoneModelChart = dc.pieChart("#phone-model-pie-chart");
+    var phoneModelChart = dc.rowChart("#phone-model-pie-chart");
     var paymentStatusChart = dc.pieChart("#payment-status-pie-chart");
     // //var numberProjectsND = dc.numberDisplay("#number-projects-nd");
-    //var averageTurnaroundTimeChart = dc.rowChart("#average-turnaround-row-chart");
+    var averageTurnaroundTimeChart = dc.rowChart("#average-turnaround-row-chart");
 
     timeChart
-        .width(600)
+        .width(900)
         .height(160)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(dateDim)
         .group(numPaymentsByDate)
         .transitionDuration(500)
         .x(d3.time.scale().domain([minDate, maxDate]))
         .elasticY(true)
+        .elasticX(true)
         .xAxisLabel("Year")
         .yAxis().ticks(4);
 
     phoneModelChart
-        .width(300)
-        .height(250)
-        .innerRadius(50)
         .dimension(phoneModelDim)
         .group(numPaymentsByPhoneModel)
-        .renderLabel(true);
+        .renderLabel(true)
+        .xAxis().ticks(4);
 
     paymentStatusChart
         .width(300)
@@ -96,12 +94,12 @@ function makeGraphs(error, paymentDiagnostics) {
         .group(numPaymentsByPaymentStatus)
         .renderLabel(true);
 
-    // averageTurnaroundTimeChart
-    //     .width(1000)
-    //     .height(330)
-    //     .dimension(phoneModelDim)
-    //     .group(averageTurnaroundTimeDimByPhoneModel)
-    //     .xAxis().ticks(10000);
+    averageTurnaroundTimeChart
+        .width(1000)
+        .height(330)
+        .dimension(phoneModelDim)
+        .group(averageTurnaroundTimeDimByPhoneModel)
+        .xAxis().ticks(10000);
 
 
     dc.renderAll();
