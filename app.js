@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var diagnostics = require('./routes/diagnostics');
 
 var app = express();
 
@@ -24,11 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bootstrap',  express.static(path.join(__dirname, '/bower_components/bootstrap/dist')));
 app.use('/jquery',  express.static(path.join(__dirname, '/bower_components/jquery/dist')));
 app.use('/keen-js',  express.static(path.join(__dirname, '/bower_components/keen-js/dist')));
-app.use('/dc-js',  express.static(path.join(__dirname, '/node_modules/dc/web/js')));
-app.use('/query-js',  express.static(path.join(__dirname, '/bower_components/query')));
+app.use('/dc-js',  express.static(path.join(__dirname, '/node_modules/dc/web')));
+app.use('/queue-async',  express.static(path.join(__dirname, '/node_modules/queue-async')));
+app.use('/reductio',  express.static(path.join(__dirname, '/node_modules/reductio')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/diagnostics', diagnostics);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

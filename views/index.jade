@@ -16,44 +16,54 @@ block content
     // Main jumbotron for a primary marketing message or call to action
     .jumbotron
       .container
-        h1 Hello, world!
+        h1 PayPal Nimbus Diagnostics
         p
-          | This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+          | This is the dashboard for PayPal Nimbus Diagnostics. Data was gathered from a number of devices sharing usage of the PayPal Nimbus Applicaiton in Australia.
         p
           a.btn.btn-primary.btn-lg(role='button') Learn more &raquo;
-    .container
-      // Example row of columns
+
+    .container-fluid
+      // START - first row
       .row
-        .col-md-4
-          h2 Heading
-          p
-            | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p
-            a.btn.btn-default(href='#', role='button') View details &raquo;
-        .col-md-4
-          h2 Heading
-          p
-            | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-          p
-            a.btn.btn-default(href='#', role='button') View details &raquo;
-        .col-md-4
-          h2 Heading
-          p
-            | Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-          p
-            a.btn.btn-default(href='#', role='button') View details &raquo;
-      hr
-      footer
-        p &copy; Company 2014
+        .col-sm-6
+          .row
+            .col-sm-12
+              .chart-wrapper
+                .chart-title Number of Payment Transactions
+                .chart-stage
+                  #time-chart
 
-    script(src='/keen-js/keen.min.js')
-    script(src='/dc-js/d3.js')
-    script(src='/dc-js/crossfilter.js')
-    script(src='/dc-js/dc.min.js')
-    script(src='/query-js/query.js')
+        .col-sm-6
+          .chart-wrapper
+            .chart-title Phone Models Distribution
+            .chart-stage
+              #phone-model-pie-chart
 
-    //script(src='/javascripts/charts.js')
+        .col-sm-6
+          .chart-wrapper
+            .chart-title Payment Status Distributions
+            .chart-stage
+              #payment-status-pie-chart
 
+
+      // END - first row
+
+      .col-sm-6
+        .chart-wrapper
+          .chart-title Average Payment Turnaround Time Per Device
+          .chart-stage
+            #average-turnaround-row-chart
+
+
+    script(src='/dc-js/js/crossfilter.js')
+    script(src='/dc-js/js/d3.js')
+    script(src='/dc-js/js/dc.js')
+    script(src='/queue-async/queue.js')
+
+    script(src='/keen-js/keen.js')
+    script(src='/reductio/reductio.js')
+
+    script(src='/javascripts/charts.js')
 
 
     // /container

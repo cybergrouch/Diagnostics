@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.dc-chart g.row text {
+    fill: black;
+    font-size: 12px;
+}
